@@ -2,21 +2,56 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { SpinnerModule } from 'angular2-spinner/dist';
+import { Ng2TableModule } from 'ng2-table/ng2-table';
+import { PaginationModule, AlertModule, BsDropdownModule } from 'ngx-bootstrap';
+import { MyDatePickerModule } from 'mydatepicker';
+import { ModalModule } from 'angular2-modal';
+import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
+
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/observable/throw';
+
+import { ManageUserModule } from './modules/manage-user/manage-user.module';
+import { ReportSalesModule } from './modules/report-sales/report-sales.module';
+import { ManageProductModule } from './modules/manage-product/manage-product.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { Page404Component } from './components/page-404/page-404.component';
+import { HomeComponent } from './components/home/home.component';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth.guard';
+import { AdminGuard } from './guards/admin.guard';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent,
+    Page404Component,
+    HomeComponent
   ],
   imports: [
+    ManageUserModule,
+    ReportSalesModule,
+    ManageProductModule,
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    Ng2TableModule,
+    BsDropdownModule.forRoot(),
+    PaginationModule.forRoot(),
+    AlertModule.forRoot(),
+    SpinnerModule,
+    MyDatePickerModule,
+    ModalModule.forRoot(),
+    BootstrapModalModule
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard, AdminGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

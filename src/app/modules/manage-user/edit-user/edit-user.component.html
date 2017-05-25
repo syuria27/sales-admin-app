@@ -1,0 +1,55 @@
+<alert type="danger" class="text-center" *ngIf="errorMessage"><b>{{errorMessage}}</b></alert>
+<div *ngIf="loadingUser" class="text-center">
+    <spinner [size]="100" [tickness]="10"></spinner>
+</div>
+<div class="container-fluid col-md-4" *ngIf="user.kode_sales">
+  <div class="row">
+    <div class="col-md-8">
+      <h2>{{user.kode_sales}}</h2>
+    </div>
+    <div class="col-md-4 text-right">
+      <button (click)="nonActive()" class="btn btn-danger top15" *ngIf="user.status">
+          <span class="glyphicon glyphicon-remove"></span> Non Active
+      </button>
+      <button (click)="active()" class="btn btn-success top15" *ngIf="!user.status">
+          <span class="glyphicon glyphicon-ok"></span> Active
+      </button>
+    </div>
+  </div>
+  <hr>
+  <form #form="ngForm">
+
+    <div class="form-group">
+      <label for="nama_sales" class="control-label">Nama sales</label>
+      <input [(ngModel)]="user.nama_sales" type="text" name="nama_sales" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label for="depot" class="control-label">Depot</label>
+      <input [(ngModel)]="user.depot" type="text" name="depot" class="form-control" required>
+    </div>
+
+    <hr>
+    <div class="form-group">
+      <label for="password" class="control-label">Password</label>
+      <input [(ngModel)]="password" type="text" name="password" class="form-control">
+    </div>
+
+    <div class="row">
+      <div class="col-md-5">
+          <button (click)="updatePassword()" class="btn btn-warning btn-width-100" type="submit" [disabled]="!password">Update Password</button>
+      </div>
+      <div class="col-md-2 text-center">
+        <div *ngIf="loading">
+          <spinner [size]="33" [tickness]="10"></spinner>
+        </div>
+      </div>
+      <div class="col-md-5">
+          <button (click)="updateData()" class="btn btn-primary btn-width-100" type="submit" [disabled]="form.invalid">Update Data</button>
+      </div>
+    </div>
+  </form>
+  <br>
+  <alert type="danger" class="text-center" *ngIf="errorUpdate"><b>{{errorUpdate}}</b></alert>
+  <alert type="success" class="text-center" *ngIf="successUpdate"><b>{{successUpdate}}</b></alert>
+</div>
