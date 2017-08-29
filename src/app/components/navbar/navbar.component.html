@@ -18,6 +18,8 @@
           </div>
         </a>
       </li>
+      <li *ngIf="isAdmin" [routerLinkActive]="['active']"><a routerLink="/upload">Upload</a></li>
+      <li *ngIf="isAdmin" [routerLinkActive]="['active']"><a routerLink="/notif">Notif</a></li>
       <!--<li *ngIf="isLoggedIn" style="cursor:pointer" [routerLinkActive]="['active']">
         <a dropdown class="dropdown">
           <div dropdownToggle class="dropdown-toggle">

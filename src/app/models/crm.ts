@@ -1,0 +1,35 @@
+export class CRM {
+  kode_crm: string;
+  tanggal: Date;
+  nama_toko: string;
+  kode_sap: number;
+  nama_pemilik: string;
+  alamat: string;
+  MESIN_NIPPON_PAINT: string;
+  OMSET_NIPPON_PAINT: number;
+  MESIN_DULUX: string;
+  OMSET_DULUX: number;
+  MESIN_AVIAN: string;
+  OMSET_AVIAN: number;
+  MESIN_PROPAN: string;
+  OMSET_PROPAN: number;
+  MESIN_MOWILEX: string;
+  OMSET_MOWILEX: number;
+  MESIN_DANAPAINT: string;
+  OMSET_DANAPAINT: number;
+  MESIN_JOTUN: string;
+  OMSET_JOTUN: number;
+  MESIN_KANSAI: string;
+  OMSET_KANSAI: number;
+  MESIN_SANCENTIA: string;
+  OMSET_SANCENTIA: number;
+  MESIN_PACIFIC_PAINT: string;
+  OMSET_PACIFIC_PAINT: number;
+  MESIN_WARNA_AGUNG: string;
+  OMSET_WARNA_AGUNG: number;
+  MESIN_RAJAWALI: string;
+  OMSET_RAJAWALI: number;
+  MESIN_TUNGGAL_JAYA: string;
+  OMSET_TUNGGAL_JAYA: number;
+  tgl: string;
+}

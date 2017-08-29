@@ -19,6 +19,7 @@ export class EditUserComponent implements OnInit {
   user: User = {
     nama_sales : '',
     depot: '',
+    kode_sap: 0,
     hak_akses: this.hak_akses[0].value
   };
 
@@ -33,6 +34,10 @@ export class EditUserComponent implements OnInit {
 
   ngOnInit() {
     this.getUser();
+  }
+
+  onlyNumberKey(event) {
+    return (event.charCode === 8 || event.charCode === 0) ? null : event.charCode >= 48 && event.charCode <= 57;
   }
 
   updateData() {

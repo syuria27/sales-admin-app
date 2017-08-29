@@ -23,8 +23,13 @@ export class InputUserComponent implements OnInit {
     this.user = {
       nama_sales : '',
       depot: '',
+      kode_sap: 0,
       hak_akses: this.hak_akses[0].value
     };
+  }
+
+  onlyNumberKey(event) {
+    return (event.charCode === 8 || event.charCode === 0) ? null : event.charCode >= 48 && event.charCode <= 57;
   }
 
   showAlertSuccess(resp: string): void {
@@ -50,6 +55,7 @@ export class InputUserComponent implements OnInit {
         this.user = {
           nama_sales : '',
           depot: '',
+          kode_sap: 0,
           hak_akses: this.hak_akses[0].value
         };
         this.showAlertSuccess(msg.error_msg);

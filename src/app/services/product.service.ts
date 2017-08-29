@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-//import { Product } from '../models/product';
+// import { Product } from '../models/product';
 import { ProductList } from '../models/product-list';
 import { Sales } from '../models/sales';
 import { Observable } from 'rxjs/Observable';
@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
 
 @Injectable()
 export class ProductService {
-  private apiUrl = 'http://localhost:3003/api/product';
+  private apiUrl = 'http://npspgmanagement.co.id:3003/api/product';
 
   constructor(private http: Http, private auth: AuthService) { }
 

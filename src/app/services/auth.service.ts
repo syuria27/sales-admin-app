@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
-  private authUrl = 'http://localhost:3003/api/login';
+  private authUrl = 'http://npspgmanagement.co.id:3003/api/login';
   private loggedIn = false;
 
   constructor(private http: Http) {

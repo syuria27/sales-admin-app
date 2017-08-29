@@ -15,6 +15,7 @@ export class ListUserComponent implements OnInit {
   public rows: Array<any> = [];
   public columns: Array<any> = [
     {title: 'Kode Sales', name: 'kode_sales', className: ['text-center']},
+    {title: 'Kode SAP', name: 'kode_sap', className: ['text-center']},
     {title: 'Nama Sales', name: 'nama_sales', className: ['text-center']},
     {title: 'Depot', name: 'depot', className: ['text-center']},
     {title: 'Status', name: 'status', className: ['text-center col-md-1']},

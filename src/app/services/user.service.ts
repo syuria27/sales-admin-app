@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class UserService {
 
-  private apiUrl = 'http://localhost:3003/api/user';
+  private apiUrl = 'http://npspgmanagement.co.id:3003/api/user';
 
   constructor(private http: Http) { }
 
@@ -26,6 +26,7 @@ export class UserService {
           }
           return{
             kode_sales : user.kode_sales,
+            kode_sap : user.kode_sap,
             nama_sales : user.nama_sales,
             depot : user.depot,
             status : status

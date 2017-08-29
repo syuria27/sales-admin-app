@@ -1,65 +1,50 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { SalesService } from '../../../services/sales.service';
+import { RptService } from '../../../services/rpt.service';
 import { Sales } from '../../../models/sales';
 
 @Component({
-  selector: 'app-sales-list',
-  templateUrl: './sales-list.component.html',
+  selector: 'app-rpt-sales',
+  templateUrl: './rpt-sales.component.html',
   styles: []
 })
-export class SalesListComponent implements OnInit {
-  loading = false;
-  errorMessage = '';
+export class RptSalesComponent implements OnInit {
+
+  sales: Sales;
+  errorMessage: string;
+  errorMessageSales: string;
+  loadingSales = false;
+  loadingRpt = false;
+  linkExport = 'http://npspgmanagement.co.id/export-sales/report/report_by_uid';
+
+  mm = 0;
+  months = [
+    { val: 1,  name: 'Januari' },
+    { val: 2,  name: 'February' },
+    { val: 3,  name: 'Maret' },
+    { val: 4,  name: 'April' },
+    { val: 5,  name: 'Mei' },
+    { val: 6,  name: 'Juni' },
+    { val: 7,  name: 'Juli' },
+    { val: 8,  name: 'Agustus' },
+    { val: 9,  name: 'September' },
+    { val: 10,  name: 'Oktober' },
+    { val: 11,  name: 'November' },
+    { val: 12,  name: 'Desember' }
+  ];
+  years: number[] = [];
+  yy: number;
 
   public rows: Array<any> = [];
   public columns: Array<any> = [
-    {title: 'Kode Sales', name: 'kode_sales', className: ['text-center']},
+    {title: 'Kode Report', name: 'kode_report', className: ['text-center']},
+    {title: 'Tanggal', name: 'tanggal', className: ['text-center']},
+    {title: 'Nama Toko', name: 'nama_toko', className: ['text-center']},
     {title: 'Kode SAP', name: 'kode_sap', className: ['text-center']},
-    {title: 'Nama sales', name: 'nama_sales', className: ['text-center']},
-    {title: 'Depot', name: 'depot', className: ['text-center']},
-    /*{title: 'Report', name: 'actionSimple', className: ['text-center col-md-1'],
-      classNameTd: ['text-center'], actions: {type: 'simple',
-        buttons: [{
-          name: 'visit',
-          title: 'Visit',
-          styleClass: 'btn btn-info',
-          styleIcon: 'glyphicon glyphicon-search',
-          action: 'onVisit'
-        }]
-      }
-    }*/
-    {
-      title: 'Report',
-      name: 'actionGroup',
-      className: ['text-center col-md-2-5'],
-      classNameTd: ['text-center'],
-      actions: {
-        type: 'group',
-        buttons: [
-          {
-            name: 'visit',
-            title: 'Visit',
-            styleClass: 'btn btn-info',
-            action: 'onVisit'
-          },
-          {
-            name: 'crm',
-            title: 'CRM',
-            styleClass: 'btn btn-warning',
-            action: 'onCRM'
-          },
-          {
-            name: 'report',
-            title: 'Report',
-            styleClass: 'btn btn-success',
-            action: 'onReport'
-          }
-        ]
-      }
-    }
+    {title: 'Alamat', name: 'alamat', className: ['text-center']},
+    {title: 'Keterangan', name: 'keterangan', className: ['text-center']},
   ];
-
   public page = 1;
   public itemsPerPage = 10;
   public maxSize = 5;
@@ -70,44 +55,23 @@ export class SalesListComponent implements OnInit {
     paging: true,
     sorting: {columns: this.columns},
     filtering: {filterString: ''},
-    className: ['table-striped', 'table-bordered'],
-    api: {
-      onVisit: this.onVisit.bind(this),
-      onCRM: this.onCRM.bind(this),
-      onReport: this.onReport.bind(this)
-      /*onFocus: this.onFocus.bind(this)*/
-    }
+    className: ['table-striped', 'table-bordered']
   };
 
-  private data: Array<Sales> = [];
+  private data: Array<any> = [];
 
-  constructor(private salesService: SalesService, private router: Router) {
+  constructor(
+    private route: ActivatedRoute,
+    private salesService: SalesService,
+    private rptService: RptService
+  ) {
     this.length = this.data.length;
   }
 
   ngOnInit() {
+    this.getMonthYear();
     this.getSales();
   }
-
-  public onVisit(data: any): void {
-    console.log('edit', data.row.kode_sales);
-    this.router.navigate(['/report-sales', 'visit', data.row.kode_sales]);
-  }
-
-  public onCRM(data: any): void {
-    console.log('view', data.row.kode_sales);
-    this.router.navigate(['/report-sales', 'crm', data.row.kode_sales]);
-  }
-
-  public onReport(data: any): void {
-    console.log('view', data.row.kode_sales);
-    this.router.navigate(['/report-sales', 'rpt', data.row.kode_sales]);
-  }
-
-  /*public onFocus(data: any):void {
-    console.log('view', data.row.kode_sales);
-    this.router.navigate(['/report-sales','focus',data.row.kode_sales]);
-  }*/
 
   public changePage(page: any, data: Array<any> = this.data): Array<any> {
     const start = (page.page - 1) * page.itemsPerPage;
@@ -169,8 +133,7 @@ export class SalesListComponent implements OnInit {
     filteredData.forEach((item: any) => {
       let flag = false;
       this.columns.forEach((column: any) => {
-        if ( item[column.name] &&
-             item[column.name].toString().match(this.config.filtering.filterString)) {
+        if (item[column.name].toString().match(this.config.filtering.filterString)) {
           flag = true;
         }
       });
@@ -203,21 +166,48 @@ export class SalesListComponent implements OnInit {
   }
 
   getSales() {
-    this.loading = true;
-    this.salesService.getAllSales()
-      .subscribe(users => {
-        console.log(users);
-         this.data = users;
-         this.length = this.data.length; // this is for pagination
-         this.onChangeTable(this.config);
-         this.loading = false;
-      },
-      error => {
-        this.errorMessage = error;
-        console.error(error);
-        this.loading = false;
-      }
+    this.loadingSales = true;
+    const kode_sales = this.route.snapshot.params['kode_sales'];
+    this.salesService.getSales(kode_sales)
+      .subscribe(
+        sales => {
+          this.sales = sales;
+          this.loadingSales = false;
+        }, error => {
+           this.errorMessageSales = error;
+           this.loadingSales = false;
+        }
       );
   }
 
+  getMonthYear() {
+    const today = new Date();
+    this.mm = today.getMonth() + 1;
+    this.yy = today.getFullYear();
+    for (let i = (this.yy - 10); i <= this.yy; i++) {
+      this.years.push(i);
+    }
+  }
+
+  search() {
+    this.data = [];
+    this.length = this.data.length; // this is for pagination
+    this.onChangeTable(this.config);
+    this.loadingRpt = true;
+    this.rptService.getSalesReport(this.sales.kode_sales, this.mm, this.yy)
+      .subscribe(
+        crm => {
+          this.data = crm;
+          this.length = this.data.length; // this is for pagination
+          this.onChangeTable(this.config);
+          this.loadingRpt = false;
+          this.errorMessage = '';
+        }, error => {
+            this.errorMessage = error;
+            this.length = this.data.length; // this is for pagination
+            this.onChangeTable(this.config);
+            this.loadingRpt = false;
+        }
+      );
+  }
 }

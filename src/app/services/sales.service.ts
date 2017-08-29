@@ -4,14 +4,10 @@ import { Sales } from './../models/sales';
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from './auth.service';
 
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/throw';
-
 @Injectable()
 export class SalesService {
 
-  private apiUrl = 'http://localhost:3003/api/sales';
+  private apiUrl = 'http://npspgmanagement.co.id:3003/api/sales';
 
   constructor(private http: Http, private auth: AuthService) { }
 
