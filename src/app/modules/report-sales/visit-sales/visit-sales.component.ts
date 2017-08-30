@@ -19,7 +19,7 @@ export class VisitSalesComponent implements OnInit {
   errorMessageSales: string;
   loadingSales = false;
   loadingVisit = false;
-  linkExport = 'http://npsalesmanagement.co.id/export-sales/visit/visit_by_uid';
+  linkExport = 'http://npspgmanagement.co.id/export-sales/visit/visit_by_uid';
 
   myDatePickerOptions: IMyOptions = {
         showClearDateBtn: false,
@@ -205,7 +205,7 @@ export class VisitSalesComponent implements OnInit {
   onDateChanged(event: IMyDateModel) {
     // event properties are: event.date, event.jsdate, event.formatted and event.epoc
     this.tanggal = `${event.date.year}-${event.date.month}-${event.date.day}`;
-    this.search();
+    // this.search();
   }
 
 }

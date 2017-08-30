@@ -33,10 +33,12 @@
       <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="model" (dateChanged)="onDateChanged($event)" required>
       </my-date-picker>
       <br>
-      <a href="{{linkExport}}/{{sales.kode_sales}}/" class="btn btn-info top10" role="button" *ngIf="length">
+      <a href="{{linkExport}}/{{sales.kode_sales}}/{{tanggal}}" class="btn btn-info top10" role="button" *ngIf="length">
         Export <span class="glyphicon glyphicon-export"></span></a>
       <button class="btn btn-info top10" type="button" disabled="disabled" *ngIf="!length">
         Export <span class="glyphicon glyphicon-export"></span></button>
+      <button class="btn btn-primary top10" type="button" (click)="search()">
+        Search <span class="glyphicon glyphicon-search"></span></button>
     </div>
   </div>
 
