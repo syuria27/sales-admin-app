@@ -39,6 +39,7 @@ export class RptSalesComponent implements OnInit {
   public rows: Array<any> = [];
   public columns: Array<any> = [
     {title: 'Kode Report', name: 'kode_report', className: ['text-center']},
+    {title: 'Photo', name: 'photo', className: ['text-center']},
     {title: 'Tanggal', name: 'tanggal', className: ['text-center']},
     {title: 'Nama Toko', name: 'nama_toko', className: ['text-center']},
     {title: 'Kode SAP', name: 'kode_sap', className: ['text-center']},
