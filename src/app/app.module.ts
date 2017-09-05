@@ -18,6 +18,7 @@ import 'rxjs/add/observable/throw';
 import { ManageUserModule } from './modules/manage-user/manage-user.module';
 import { ReportSalesModule } from './modules/report-sales/report-sales.module';
 import { ManageProductModule } from './modules/manage-product/manage-product.module';
+import { ManageEmailModule } from './modules/manage-email/manage-email.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -44,6 +45,7 @@ import { NotifService } from './services/notif.service';
     ManageUserModule,
     ReportSalesModule,
     ManageProductModule,
+    ManageEmailModule,
     BrowserModule,
     FormsModule,
     HttpModule,
