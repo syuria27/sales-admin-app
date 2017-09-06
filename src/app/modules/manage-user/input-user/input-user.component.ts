@@ -14,7 +14,8 @@ export class InputUserComponent implements OnInit {
 
   hak_akses = [
     {value: 1, display: 'User'},
-    {value: 2, display: 'Admin'}
+    {value: 2, display: 'Depot'},
+    {value: 4, display: 'Order'}
   ];
 
   constructor(private userService: UserService) { }

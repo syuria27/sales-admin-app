@@ -31,5 +31,23 @@ export class CRM {
   OMSET_RAJAWALI: number;
   MESIN_TUNGGAL_JAYA: string;
   OMSET_TUNGGAL_JAYA: number;
+  MESIN_INDACO: string;
+  OMSET_INDACO: number;
+  MESIN_TOA: string;
+  OMSET_TOA: number;
+  MESIN_ASIAN: string;
+  OMSET_ASIAN: number;
+  MESIN_FALCON: string;
+  OMSET_FALCON: number;
+  MESIN_MIKA: string;
+  OMSET_MIKA: number;
+  MESIN_INDANA: string;
+  OMSET_INDANA: number;
+  MESIN_EMCO: string;
+  OMSET_EMCO: number;
+  MESIN_SIEV: string;
+  OMSET_SIEV: number;
+  MESIN_BITAL: string;
+  OMSET_BITAL: number;
   tgl: string;
 }

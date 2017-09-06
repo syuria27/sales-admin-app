@@ -1,18 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { Sales } from '../models/sales';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class NotifService {
 
   private apiUrl = 'http://npspgmanagement.co.id:3003/api/fcm';
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private auth: AuthService) { }
 
   /**
    * Push Notif
    */
   pushNotif(notif: any): Observable<any> {
+    const sales: Sales = this.auth.getUserInfo();
+    notif.depot = sales.depot;
     return this.http.post(this.apiUrl, notif)
       .map(res => res.json())
       .catch(this.handleError);

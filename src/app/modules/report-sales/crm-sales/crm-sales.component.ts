@@ -69,7 +69,25 @@ export class CrmSalesComponent implements OnInit {
     {title: 'MESIN RAJAWALI', name: 'MESIN_RAJAWALI', className: ['text-center']},
     {title: 'OMSET RAJAWALI', name: 'OMSET_RAJAWALI', className: ['text-center']},
     {title: 'MESIN TUNGGAL JAYA', name: 'MESIN_TUNGGAL_JAYA', className: ['text-center']},
-    {title: 'OMSET TUNGGAL JAYA', name: 'OMSET_TUNGGAL_JAYA', className: ['text-center']}
+    {title: 'OMSET TUNGGAL JAYA', name: 'OMSET_TUNGGAL_JAYA', className: ['text-center']},
+    {title: 'MESIN INDACO', name: 'MESIN_INDACO', className: ['text-center']},
+    {title: 'OMSET INDACO', name: 'OMSET_INDACO', className: ['text-center']},
+    {title: 'MESIN TOA', name: 'MESIN_TOA', className: ['text-center']},
+    {title: 'OMSET TOA', name: 'OMSET_TOA', className: ['text-center']},
+    {title: 'MESIN ASIAN', name: 'MESIN_ASIAN', className: ['text-center']},
+    {title: 'OMSET ASIAN', name: 'OMSET_ASIAN', className: ['text-center']},
+    {title: 'MESIN FALCON', name: 'MESIN_FALCON', className: ['text-center']},
+    {title: 'OMSET FALCON', name: 'OMSET_FALCON', className: ['text-center']},
+    {title: 'MESIN MIKA', name: 'MESIN_MIKA', className: ['text-center']},
+    {title: 'OMSET MIKA', name: 'OMSET_MIKA', className: ['text-center']},
+    {title: 'MESIN INDANA', name: 'MESIN_INDANA', className: ['text-center']},
+    {title: 'OMSET INDANA', name: 'OMSET_INDANA', className: ['text-center']},
+    {title: 'MESIN EMCO', name: 'MESIN_EMCO', className: ['text-center']},
+    {title: 'OMSET EMCO', name: 'OMSET_EMCO', className: ['text-center']},
+    {title: 'MESIN SIEV', name: 'MESIN_SIEV', className: ['text-center']},
+    {title: 'OMSET SIEV', name: 'OMSET_SIEV', className: ['text-center']},
+    {title: 'MESIN BITAL', name: 'MESIN_BITAL', className: ['text-center']},
+    {title: 'OMSET BITAL', name: 'OMSET_BITAL', className: ['text-center']}
   ];
   public page = 1;
   public itemsPerPage = 10;

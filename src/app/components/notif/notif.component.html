@@ -5,17 +5,17 @@
 
     <div class="form-group">
       <label for="judul" class="control-label">Judul</label>
-      <input [(ngModel)]="notif.judul" type="text" name="judul" class="form-control" required>
+      <input [(ngModel)]="notif.judul" type="text" name="judul" maxlength="30" class="form-control" required>
     </div>
 
     <div class="form-group">
       <label for="short_desc" class="control-label">Short Description</label>
-      <input [(ngModel)]="notif.short_desc" type="text" name="short_desc" class="form-control" required>
+      <input [(ngModel)]="notif.short_desc" type="text" name="short_desc" maxlength="50" class="form-control" required>
     </div>
 
     <div class="form-group">
       <label for="description" class="control-label">Description</label><br>
-      <textarea [(ngModel)]="notif.description" name="description" class="form-control" rows="4" cols="68" required></textarea>
+      <textarea [(ngModel)]="notif.description" name="description" maxlength="255" class="form-control" rows="4" cols="68" required></textarea>
     </div>
     <div class="row">
       <div class="col-md-8">

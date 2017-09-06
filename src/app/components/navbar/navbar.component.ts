@@ -29,6 +29,14 @@ export class NavbarComponent implements OnInit {
     return this.auth.isAdmin();
   }
 
+  get isOrder(){
+    return this.auth.isOrder();
+  }
+
+  get isUser(){
+    return this.auth.isUser();
+  }
+
   get sales(){
     return this.auth.getUserInfo();
   }

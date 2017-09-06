@@ -31,6 +31,9 @@ import { AdminGuard } from './guards/admin.guard';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { NotifComponent } from './components/notif/notif.component';
 import { NotifService } from './services/notif.service';
+import { OrderComponent } from './components/order/order.component';
+import { OrderService } from './services/order.service';
+import { OrderGuard } from './guards/order.guard';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,8 @@ import { NotifService } from './services/notif.service';
     Page404Component,
     HomeComponent,
     UploadFileComponent,
-    NotifComponent
+    NotifComponent,
+    OrderComponent
   ],
   imports: [
     ManageUserModule,
@@ -61,7 +65,7 @@ import { NotifService } from './services/notif.service';
     BootstrapModalModule,
     FileUploadModule
   ],
-  providers: [AuthService, AuthGuard, AdminGuard, NotifService],
+  providers: [AuthService, AuthGuard, AdminGuard, NotifService, OrderService, OrderGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

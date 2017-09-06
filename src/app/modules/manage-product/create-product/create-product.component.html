@@ -7,7 +7,7 @@
       <div class="col-md-8">
         <div class="form-group">
           <label for="nama_product" class="control-label">Nama Product</label>
-          <input [(ngModel)]="nama_product" type="text" name="nama_product" class="form-control" required>
+          <input [(ngModel)]="nama_product" type="text" name="nama_product" maxlength="50" class="form-control" required>
         </div>
       </div>
       <div *ngIf="loading" class="col-md-1 text-right top25">

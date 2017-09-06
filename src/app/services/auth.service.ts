@@ -29,6 +29,32 @@ export class AuthService {
     }
   }
 
+  isOrder(): boolean {
+    const user = JSON.parse(localStorage.getItem('userInfo'));
+    if (user) {
+      if (user.hak_akses === 4) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
+  isUser(): boolean {
+    const user = JSON.parse(localStorage.getItem('userInfo'));
+    if (user) {
+      if (user.hak_akses === 2) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
   login(username: string, password: string): Observable<Sales> {
     return this.http.post(this.authUrl, {username, password})
       .map(res => res.json().user)
